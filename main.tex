@@ -1,0 +1,231 @@
+\documentclass{sazuko}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{New Article Template -- Sazuko}
+\author{Duy Nam Schlitz}
+\date{December 2024}
+\SZKundertitle{Something new}
+
+\SZKyear{2024}
+\SZKlocation{Hanau}
+\SZKdates{03.12}
+\SZKcopyright{2024}{Duy Nam Schlitz}
+\SZKarchive{123948}
+
+
+\abstract{\lipsum[2]}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Two--Column Section}
+This section starts in the default layout (two--column).
+
+\lipsum[1-12]
+
+\togglelayout
+
+\section{One--Column Section}
+This section switches to one--column layout, starting on a new page.
+
+\subsection{Somethings}
+\subsection{Somethings}
+\subsection{Somethings}
+
+
+\lipsum[1-4]\footnote{\lipsum[1]}
+
+$$ \frac{1}{|A|} \int_A f(x) dx + \frac{1}{|B|} \int_B
+f(x) dx = \int_X f(x) dx $$
+
+\togglelayout
+
+\importantsection{Back to Two--Column Layout}
+This section is in two--column layout, starting on a new page. \lipsum[1-9]
+
+\subsection{Hello}
+
+$$ \frac{1}{|A|} \int_A f(x) dx + \frac{1}{|B|} \int_B
+f(x) dx = \int_X f(x) dx $$
+
+\importantsection{Another Custom Section}
+This section has a blue headline in two--column mode.\footnote{\lipsum[1-2]}
+
+\tipsection{Tip}
+\randomformat{Something is not right here. You can change the proportion.}
+
+\lipsum[1-5]
+
+\togglelayout
+
+\section{Seifert-van Kampen Theorem}
+
+\textbf{Proof}
+
+Let $\varphi: A \to [0, 1]$ and $\psi: B \to [0, 1]$
+be two continuous functions such that $\varphi(a) = \psi(b)$ for all $a \in A$, $b \in B$. Define a new
+function $F: X \to [0, 1]$ by
+
+$$F(x) = \begin{cases} \varphi(x) & x \in A \\
+\psi(x) & x \in B \end{cases}$$
+
+Since $\mathcal{C}$ is a collection of open subsets
+of $X$, we can define a new function $f: X \to \mathbb{R}$ by
+
+$$f(x) = F(\varphi^{-1}(x))$$
+
+where $\varphi^{-1}: [0, 1] \to A$ is the inverse
+function of $\varphi$. Similarly, we can define
+another function $g: X \to \mathbb{R}$ by
+
+$$g(x) = F(\psi^{-1}(x))$$
+
+where $\psi^{-1}: [0, 1] \to B$ is the inverse
+function of $\psi$.
+
+By construction, we have
+
+$$f(a) = g(b)$$
+
+for all $a \in A$, $b \in B$. Therefore, we can write
+
+$$\int_A f(x) dx + \int_B g(x) dx = \int_X f(x) dx$$
+
+Since $\varphi$ and $\psi$ are continuous functions,
+we have
+
+$$\frac{1}{|A|} \int_A f(x) dx + \frac{1}{|B|} \int_B
+f(x) dx = F(\varphi(a))$$
+
+for all $a \in A$. Similarly, we have
+
+$$F(\psi(b)) = \frac{1}{|A|} \int_A f(x) dx + \frac{1}{|B|} \int_B f(x) dx$$
+
+for all $b \in B$.
+
+Since $F(x)$ is a continuous function that takes values in $[0, 1]$, we
+have
+
+$$\lim_{x \to y} F(\varphi^{-1}(x)) = F(\psi^{-1}(y))$$
+
+for all $x, y \in [0, 1]$. Therefore, we can write
+
+$$F(\varphi(a)) + F(\psi(b)) = F(\varphi^{-1}(b)) + F(\psi^{-1}(a))$$
+
+for all $a \in A$, $b \in B$.
+
+Substituting the previous equations, we get
+
+$$\frac{1}{|A|} \int_A f(x) dx + \frac{1}{|B|} \int_B g(x) dx =
+F(\varphi^{-1}(b)) + F(\psi^{-1}(a))$$
+
+Since $F(x)$ is a continuous function that takes values in $[0, 1]$, we
+have
+
+$$\lim_{x \to y} F(x) = F(y)$$
+
+for all $x, y \in [0, 1]$. Therefore, we can write
+
+$$\frac{1}{|A|} \int_A f(x) dx + \frac{1}{|B|} \int_B g(x) dx =
+F(\varphi^{-1}(b))$$
+
+for all $b \in [0, 1]$. Similarly, we have
+
+$$F(\psi^{-1}(a)) = \frac{1}{|A|} \int_A f(x) dx + \frac{1}{|B|} \int_B
+g(x) dx$$
+
+for all $a \in [0, 1]$.
+
+Combining the two equations, we get
+
+$$\frac{1}{|A|} \int_A f(x) dx + \frac{1}{|B|} \int_B g(x) dx =
+F(\varphi^{-1}(b)) + F(\psi^{-1}(a))$$
+
+for all $a \in [0, 1]$, $b \in [0, 1]$.
+
+Since $F(x)$ is a continuous function that takes values in $[0, 1]$, we
+have
+
+$$\lim_{x \to y} F(\varphi^{-1}(x)) = F(\psi^{-1}(y))$$
+
+for all $x, y \in [0, 1]$. Therefore, we can write
+
+$$\frac{1}{|A|} \int_A f(x) dx + \frac{1}{|B|} \int_B g(x) dx =
+F(\varphi^{-1}(b))$$
+
+for all $b \in [0, 1]$. Similarly, we have
+
+$$F(\psi^{-1}(a)) = \frac{1}{|A|} \int_A f(x) dx + \frac{1}{|B|} \int_B
+g(x) dx$$
+
+for all $a \in [0, 1]$.
+
+Combining the two equations, we get
+
+$$\lim_{x \to y} F(\varphi^{-1}(x)) = \lim_{y \to x} F(\psi^{-1}(y))$$
+
+for all $x, y \in [0, 1]$. Therefore, we can write
+
+$$F(x) = \int_X f(y) dy$$
+
+for all $x \in X$.
+
+Substituting the equation for $f$, we get
+
+$$\frac{1}{|A|} \int_A F(\varphi^{-1}(y)) dy + \frac{1}{|B|} \int_B
+F(\psi^{-1}(y)) dy = \int_X f(y) dy$$
+
+Since $\varphi$ and $\psi$ are continuous functions, we have
+
+$$\lim_{y \to x} F(\varphi^{-1}(y)) = F(x)$$
+
+for all $x \in A$. Therefore, we can write
+
+$$\frac{1}{|A|} \int_A f(y) dy + \frac{1}{|B|} \int_B g(y) dy = \int_X
+f(y) dy$$
+
+for all $y \in X$.
+This proves the Seifert-van Kampen theorem.
+
+\subsubsection{Sometimes}
+
+\togglelayout
+
+\tipsection{Tip}
+\lipsum[1]
+
+\importantsection{Important / Definition / Key Point}
+\lipsum[1]
+\warningsection{Warning}
+\lipsum[1]
+\examplesection{Example}
+\lipsum[1]
+\resultsection{Result}
+\lipsum[1]
+\questionsection{What is this?/Exercise Part}
+\lipsum[1]
+
+\section{New}
+
+\definitionAN{Math}{Is hArd.}{Please learn it}
+
+
+\definition{Math}{Is hArd.}
+
+\exerciseWS{Hard}{Exercise}{Solution and Explanation}
+\exercise{Something}{Exercise}
+
+\introduction{DOn't even try}{No one}
+
+\summary{Anjin}{Is strange}
+% 안진
+
+\end{document}
