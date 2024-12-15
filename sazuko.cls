@@ -259,8 +259,31 @@ end
 
 % Boxes
 
+\newcounter{ctrDefinition}
+\newcounter{ctrExercise}
+\newcounter{ctrIntroduction}
+\newcounter{ctrSummary}
+
+\newcommand{\formattingBoxNumber}[1]{%
+    \ifnum\value{subsection}=0
+        \ifnum\value{subsubsection}=0
+            \thesection.#1
+        \else
+            \thesubsection.#1
+        \fi
+    \else
+        \ifnum\value{subsubsection}=0
+            \thesubsection.#1
+        \else
+            \thesubsubsection.#1
+        \fi
+    \fi
+}
+
+
 \newcommand{\definitionAN}[3]{ % Additional Notes
-    \begin{tcolorbox}[title=Definition: #1,
+    \refstepcounter{ctrDefinition}
+    \begin{tcolorbox}[title=\textbf{\formattingBoxNumber{\thectrDefinition}} Definition: #1,
     title filled=false,
     colback=black!3!white,
     colframe=black!75!black]
@@ -271,7 +294,8 @@ end
 }
 
 \newcommand{\definition}[2]{
-    \begin{tcolorbox}[title=Definition: #1,
+    \refstepcounter{ctrDefinition}
+    \begin{tcolorbox}[title=\textbf{\formattingBoxNumber{\thectrDefinition}} Definition: #1,
     title filled=false,
     colback=black!3!white,
     colframe=black!75!black]
@@ -280,7 +304,8 @@ end
 }
 
 \newcommand{\exercise}[2]{ % Without Solution and Explanation
-    \begin{tcolorbox}[title=Exercise: #1,
+    \refstepcounter{ctrExercise}
+    \begin{tcolorbox}[title=\textbf{\formattingBoxNumber{\thectrExercise}} Exercise: #1,
     title filled=false,
     colback=blue!3!white,
     colframe=blue!50!black]
@@ -289,7 +314,8 @@ end
 }
 
 \newcommand{\exerciseWS}[3]{ % With Solution and Explanation
-    \begin{tcolorbox}[title=Exercise: #1,
+    \refstepcounter{ctrExercise}
+    \begin{tcolorbox}[title=\textbf{\formattingBoxNumber{\thectrExercise}} Exercise: #1,
     title filled=false,
     colback=blue!3!white,
     colframe=blue!50!black]
@@ -299,8 +325,9 @@ end
     \end{tcolorbox}
 }
 
-\newcommand{\introduction}[2]{ % With Solution and Explanation
-    \begin{tcolorbox}[title=#1,
+\newcommand{\introduction}[2]{
+    \refstepcounter{ctrIntroduction}
+    \begin{tcolorbox}[title=\textbf{\formattingBoxNumber{\thectrIntroduction}} #1,
     title filled=false,
     colback=purple!3!white,
     colframe=purple!75!black]
@@ -308,8 +335,9 @@ end
     \end{tcolorbox}
 }
 
-\newcommand{\summary}[2]{ % With Solution and Explanation
-    \begin{tcolorbox}[title=#1,
+\newcommand{\summary}[2]{
+    \refstepcounter{ctrSummary}
+    \begin{tcolorbox}[title=\textbf{\formattingBoxNumber{\thectrSummary}} #1,
     title filled=false,
     colback=green!3!white,
     colframe=green!40!black]
