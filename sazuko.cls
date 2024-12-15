@@ -21,6 +21,10 @@
 \RequirePackage{bm}
 \RequirePackage{tcolorbox}
 
+
+\RequirePackage{titling}
+\RequirePackage{hyphenat}
+
 \RequirePackage[english]{babel}
 
 
@@ -28,6 +32,15 @@
 \newcommand*{\SZKyear}[1]{\def\SZK@year{#1}}\SZKyear{}
 \newcommand*{\SZKlocation}[1]{\def\SZK@location{#1}}\SZKlocation{}
 \newcommand*{\SZKdates}[1]{\def\SZK@dates{#1}}\SZKdates{}
+
+\newcommand*{\SZKmode}[1]{%
+    \ifx\relax#1\relax % Check if no argument is provided
+        \def\SZK@mode{0}% Default value is 0
+    \else
+        \def\SZK@mode{#1}% Set provided value
+    \fi
+}\SZKmode{}
+
 
 \newcommand{\SZKcopyright}[2]{\def\SZK@copyright{Copyright \copyright\,#1 by #2. All rights reserved.}}
 \newcommand*{\SZKarchive}[1]{\def\SZK@archive{#1}}\SZKarchive{}
@@ -98,6 +111,16 @@ end
     \renewcommand{\footrulewidth}{0pt} % No footer line
 }
 
+\newcommand{\alignmentMode}[0]{%
+    \ifnum\SZK@mode=0
+        \centering
+    \else\ifnum\SZK@mode=1
+        \raggedright
+    \else
+        \raggedleft
+    \fi\fi
+}
+
 % Abstract
 \renewcommand{\abstract}[1]{
     \def\SZK@abstract{
@@ -108,7 +131,8 @@ end
         \vspace*{-0.8em} % Adjust the space after paragraphs
         \setlength{\parindent}{0.5cm} % Indent the first line of text
         \setlength{\parskip}{0pt} % Single spacing        
-        #1
+        \raggedright
+        \quad#1
     }
 }
 
@@ -118,7 +142,7 @@ end
 \renewcommand{\maketitle}{%
     \begin{titlepage} % Start a new page for the title
         \thispagestyle{titlepage}
-        \centering
+        \alignmentMode
         \vspace*{\fill}
         {\Huge \randomformat{\@title}\par}
         \vspace{1em}
